@@ -1,41 +1,38 @@
 'use strict';
+/// ОСНОВНЫЕ ЭЛ-ТЫ СТРАНИЦЫ ///
 let tab = document.querySelectorAll('button'),
     buttons =  document.querySelectorAll('button'),
     formContent = document.querySelectorAll('.registration-form'),
     points = document.querySelectorAll('.progress-point'),
+/// ПОЛЯ ВВОДА
     email = document.querySelector('#mail'),
     login = document.querySelector('#login'),
     password = document.querySelector('#password'),
     checkPassword = document.querySelector('#repeat_password'),
+/// ДАТА РОЖДЕНИЯ ///
     birthDay = document.querySelector('#birth_day'),
     birthMonth = document.querySelector('#birth_month'),
     birthYear = document.querySelector('#birth_year'),
     birthDate = document.querySelector('#birth_date');
 
-
+/// СОЗДАЮ КОНТЕЙНЕРЫ С ПРЕДУПРЕЖДЕНИЯМИ ///
 let emailAlert = document.createElement('div'),
     loginAlert =document.createElement('div'),
     passwordAlert =document.createElement('div'),
     birthAlert =document.createElement('div');
 
-let inputsArr = [email, login, password, checkPassword, birthDate];
+let inputsArr = [email, login, password, checkPassword, birthDate];// ПОЛУЧАЕМ МАССИВ ЭЛ-ОВ
 
-let userInfo= {
-    email: '',
-    login: '',
-    password: '',
-    birthDate: ''
-};
+let json,// ПЕРЕМЕННАЯ С БУДУЩИМИ ДАННЫМИ
+    authorizationConfirm;// BOOL АВТОРИЗАЦИИ
 
-let json,
-    registrationConfirm;
-
+/// НА ОСНОВАНИИ ЭТОГО КОНФИРМА БУДЕМ ВКЛЮЧАТЬ ОКОШКО АВТОРИЗАЦИИ(Ну или лучше сделать авторизацию по-умолчанию и переходить на форму регистрации по клику на надпись) ///
 window.addEventListener('DOMContentLoaded', () => {
-    registrationConfirm = confirm("Уже зарегистрированы?");
-    console.log(registrationConfirm);
+    authorizationConfirm = confirm("Уже зарегистрированы?");
+    console.log(authorizationConfirm);
 });
-
-function setInactivePoint(a){
+/// МЕНЯЕМ ЦВЕТА КРУЖОЧКОВ ЭТАПОВ ///
+function setInactivePoint(a) {
     for(let i = a; i < points.length; i++){
         points[i].classList.remove("active");
         points[i].classList.add("inactive");
@@ -49,23 +46,23 @@ function setActivePoint(a) {
     }
 }
 
-
-function hideTabContent(a){
+/// ПРЯЧЕМ И ПОКАЗЫВАЕМ ЭТАПЫ ///
+function hideTabContent(a) {
     for(let i = a; i < formContent.length; i++){
         formContent[i].classList.remove("show");
         formContent[i].classList.add("hidden");
     }
 }
 hideTabContent(1);
-function showTabContent(a){
+function showTabContent(a) {
     if(formContent[a].classList.contains("hidden")){
         formContent[a].classList.remove("hidden");
         formContent[a].classList.add("show");
     }
 }
 
-
-function alertCleaner(){
+/// ОЧИЩАЕМ ОКНА ПРЕДУПРЕЖДЕНИЙ ПРИ КАЖДОМ НАЖАТИИ КНОПКИ(Не смог убрать отсутсвие прерывания проверки условий, они идут дргу за другом и если мы не получаем true, то предупреждения появляются в каждом блоке)
+function alertCleaner() {
     emailAlert.classList = "";
     loginAlert.classList = "";
     passwordAlert.classList = "";
@@ -76,7 +73,7 @@ function alertCleaner(){
     birthAlert.textContent = "";
 }
 
-
+/// ПРОВЕРКИ ///
 function isMailValid(email) {
     
     let reg = email.value.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
@@ -89,7 +86,7 @@ function isMailValid(email) {
     }
     
   }
-function isLoginValid(login){
+function isLoginValid(login) {
     if (login.value.length < 4 || login.value.length > 16 || login.value == '' || login.value == null){
         loginAlert.classList = "warning";
         loginAlert.textContent = "Логин должен быть от 4 до 16 символов";
@@ -98,7 +95,7 @@ function isLoginValid(login){
         return true;
     }
 }
-function isPasswordValid(password, checkPassword){
+function isPasswordValid(password, checkPassword) {
     if (checkPassword.value != password.value || password.value == '' || password.value == null || password.value.length < 8){
         passwordAlert.classList = "warning";
         passwordAlert.textContent = "Пароль не должен быть менее 8 символов";
@@ -108,7 +105,7 @@ function isPasswordValid(password, checkPassword){
     }
    
 }
-function isBirthDateValid(birthDate){
+function isBirthDateValid(birthDate) {
     if ((birthDay.value.length == 2 && birthDay.value != 0) && (birthYear.value.length == 4 && birthDay.value != 0)){
         return true;
     }else{
@@ -117,15 +114,16 @@ function isBirthDateValid(birthDate){
         birthDate.after(birthAlert);
     }
 }
+
+/// ФУНКЦИЯ СМЕНЫ ЭТАПА ///
 function changeStage() {
     let target = event.target;
-    
         for(let i = 0; i < tab.length; i++){
             if(
                 (inputsArr[i] == email  && isMailValid(email) == true) ||
                 (inputsArr[i] == login && isLoginValid(login) == true) ||
                 (inputsArr[i] == password && isPasswordValid(password, checkPassword) == true) ||
-                (inputsArr[i+1] == birthDate && isBirthDateValid(birthDate) == true)
+                (inputsArr[i+1] == birthDate && isBirthDateValid(birthDate) == true)//ТУТ i+1 ИЗ-ЗА ТОГО ЧТО У НАС ЕЩЁ ОДНО ПОЛЕ С ПОВТОРЕНИЕМ ПАРОЛЯ КОТОРОЕ МЫ ТУТ НЕ ОБРАБАТЫВАЕМ
             ){
                 if(target == buttons[i]){
                 hideTabContent(0);
@@ -133,13 +131,13 @@ function changeStage() {
                 setInactivePoint(0);
                 setActivePoint(i+1);
                 alertCleaner();
-                let userInfo= {
+                let userInfo = {
                     email: email.value,
                     login: login.value,
                     password: password.value,
                     birthDate: `${birthYear.value}-${birthMonth.value}-${birthDay.value}`
                 };
-                json = JSON.stringify(userInfo);
+                json = JSON.stringify(userInfo);// КОНВЕРТИРУЕМ В JSON ФОРМАТ НАШ userInfo
                 break;
                 }
 
@@ -152,7 +150,7 @@ function changeStage() {
     buttons[2].addEventListener("click", changeStage);
     buttons[3].addEventListener("click", () => {
         changeStage();
-        let request = new XMLHttpRequest();
+        let request = new XMLHttpRequest();// ОТПРАВКА НА СЕРВЕР
         request.open('POST', 'server.php');
         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         request.send(json);
