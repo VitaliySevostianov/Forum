@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forum</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class = "main">
+        <div class="progress">
+            <div class="progress-point"></div>
+            <div class="progress-point"></div>
+            <div class="progress-point"></div>
+            <div class="progress-point"></div>
+            <div class="progress-point"></div>
+        </div>
+        <div class="registration">
+            <!-- Почта -->
+            <div class = "registration-form ">
+                <form class ="registration-form-inputs">
+                    <div class="registration-form-inputs-input">
+                        <input required type="email" id = "mail" name = "email" placeholder="Ваша почта">
+                    </div>
+                    <div class="registration-form-inputs-button">
+                        <button type="button" class = "button">Далее</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Логин -->
+            <div class = "registration-form ">
+                <form class ="registration-form-inputs">
+                    <div class="registration-form-inputs-input">
+                        <input name = "login" id = "login" placeholder="Ваш логин">
+                    </div>
+                    <div class="registration-form-inputs-button">
+                        <button type="button" class = "button">Далее</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Пароль с повторением -->
+            <div class = "registration-form ">
+                <form class ="registration-form-inputs">
+                    <div class="registration-form-inputs-input">
+                        <input name = "password" id = "password" placeholder="Ваш пароль">
+                    </div>
+                    <div class="registration-form-inputs-input">
+                        <input name = "repeat-password" id = "repeat_password" placeholder="Повторите пароль">
+                    </div>
+                    <div class="registration-form-inputs-button">
+                        <button type="button" class = "button">Далее</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Дата рождения -->
+            <div class = "registration-form ">
+                <form class ="registration-form-inputs">
+                    <div class="registration-form-inputs-input">
+                        <div id="birth_date">
+                            <select name="" id="birth_month">
+                                <option value="01">Январь</option>
+                                <option value="02">Февраль</option>
+                                <option value="03">Март</option>
+                                <option value="04">Апрель</option>
+                                <option value="05">Май</option>
+                                <option value="06">Июль</option>
+                                <option value="07">Июнь</option>
+                                <option value="08">Август</option>
+                                <option value="09">Сентябрь</option>
+                                <option value="10">Октябрь</option>
+                                <option value="11">Ноябрь</option>
+                                <option value="12">Декабрь</option>
+                            </div>
+
+                            <input type="text" id = "birth_day" placeholder="День">
+                            <input type="text" id = "birth_year" placeholder="Год">
+                        </div>
+                    </div>
+                    <div class="registration-form-inputs-button">
+                        <button type="button" class = "button">Завершить</button>
+                    </div>
+                </form>
+            </div>
+            <div class = "registration-form ">
+                <form class ="registration-form-inputs">
+                    <div class="registration-form-inputs-input">
+                        Вы завершили регистрацию
+                    </div>
+                    <div class="registration-form-inputs-button">
+                        <button type="button" class = "button">Начать общение</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

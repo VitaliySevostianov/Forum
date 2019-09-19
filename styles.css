@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+    outline-box-sizing: border-box;
+    outline-font-family: "Roboto Slab"; }
+
+body {
+  background-color: #2d3436;
+  color: #ffebc9; }
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center; }
+
+.registration-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 0 10px 0;
+  box-shadow: 0 0 10px 0;
+  margin: 0 auto;
+  height: 300px;
+  width: 30%;
+  border-radius: 20px;
+  background-color: #2b4059; }
+  .registration-form-inputs {
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-width: 250px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    font-family: "Roboto Slab"; }
+
+input {
+  display: block;
+  width: 250px;
+    width-min-width: 100px;
+    width-height: 40px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffebc9;
+  color: #ffebc9; }
+
+button {
+  font-size: 18px;
+  color: #ffebc9;
+  width: 250px;
+  min-width: 100px;
+  height: 40px;
+  background-color: #f15251;
+  border: none;
+  cursor: pointer; }
+  button:hover {
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 0 0 10px; }
+
+.progress {
+  margin: 0 auto;
+  margin-bottom: 0px;
+  width: 250px;
+  height: 50px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .progress-point {
+    background: #f15251;
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px; }
+  .progress .active {
+    background: #f15251; }
+  .progress .inactive {
+    background: #772f2f; }
+
+.hidden {
+  display: none; }
+
+.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.warning {
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+  background-color: #2d3436;
+  font-size: 12px;
+  width: 250px;
+  min-height: 20px;
+  max-height: 50px; }
+
+#birth_date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  #birth_date select {
+    display: block;
+    width: 70px;
+    min-width: 70px;
+    height: 21px;
+    background-color: #2d3436;
+    border: none;
+    border-bottom: 1px solid #ffebc9;
+    color: #ffebc9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
+  #birth_date input {
+    display: block;
+    width: 70px;
+    min-width: 70px;
+    height: 20px;
+    background-color: #2d3436;
+    border: none;
+    border-bottom: 1px solid #ffebc9;
+    color: #ffebc9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
