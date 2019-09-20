@@ -1,9 +1,13 @@
 'use strict';
 /// ОСНОВНЫЕ ЭЛ-ТЫ СТРАНИЦЫ ///
 let tab = document.querySelectorAll('button'),
-    buttons =  document.querySelectorAll('button'),
+    buttons = document.querySelectorAll('button'),
+    authButton = document.querySelector('.button-auth'),
     formContent = document.querySelectorAll('.registration-form'),
     points = document.querySelectorAll('.progress-point'),
+
+    reg = document.querySelector('.reg'),
+    auth = document.querySelector('.auth'),
 /// ПОЛЯ ВВОДА
     email = document.querySelector('#mail'),
     login = document.querySelector('#login'),
@@ -17,9 +21,14 @@ let tab = document.querySelectorAll('button'),
 
 /// СОЗДАЮ КОНТЕЙНЕРЫ С ПРЕДУПРЕЖДЕНИЯМИ ///
 let emailAlert = document.createElement('div'),
-    loginAlert =document.createElement('div'),
-    passwordAlert =document.createElement('div'),
-    birthAlert =document.createElement('div');
+    loginAlert = document.createElement('div'),
+    passwordAlert = document.createElement('div'),
+    birthAlert = document.createElement('div'),
+
+    regTransferHint = document.createElement('div');
+    regTransferHint.classList = "hint";
+    regTransferHint.textContent = "Ещё нет аккаунта?";
+    authButton.after(regTransferHint);
 
 let inputsArr = [email, login, password, checkPassword, birthDate];// ПОЛУЧАЕМ МАССИВ ЭЛ-ОВ
 
@@ -27,9 +36,19 @@ let authorizationConfirm;// BOOL АВТОРИЗАЦИИ
 
 /// НА ОСНОВАНИИ ЭТОГО КОНФИРМА БУДЕМ ВКЛЮЧАТЬ ОКОШКО АВТОРИЗАЦИИ(Ну или лучше сделать авторизацию по-умолчанию и переходить на форму регистрации по клику на надпись) ///
 window.addEventListener('DOMContentLoaded', () => {
-    authorizationConfirm = confirm("Уже зарегистрированы?");
-    console.log(authorizationConfirm);
+    // authorizationConfirm = confirm("Уже зарегистрированы?");
+    // console.log(authorizationConfirm);
+    showAuth();
 });
+
+function showAuth(){
+    reg.classList.add("hidden");
+    auth.classList.remove("hidden");
+}
+function showReg(){
+    reg.classList.remove("hidden");
+    auth.classList.add("hidden");
+}
 /// МЕНЯЕМ ЦВЕТА КРУЖОЧКОВ ЭТАПОВ ///
 function setInactivePoint(a) {
     for(let i = a; i < points.length; i++){
@@ -137,7 +156,7 @@ function changeStage() {
             }
         } 
 }
-
+    regTransferHint.addEventListener("click", showReg);
     buttons[0].addEventListener("click", changeStage);
     buttons[1].addEventListener("click", changeStage);
     buttons[2].addEventListener("click", changeStage);

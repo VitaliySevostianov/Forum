@@ -9,16 +9,32 @@ body {
   background-color: #2d3436;
   color: #ffebc9; }
 
-.main {
+.reg {
   width: 100%;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center; }
+
+.auth {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -36,7 +52,44 @@ body {
   width: 30%;
   border-radius: 20px;
   background-color: #2b4059; }
+  .registration-form-name {
+    margin: 10px;
+    font-family: "Roboto Slab"; }
+    .registration-form-name h1 {
+      text-align: center; }
   .registration-form-inputs {
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-width: 250px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    font-family: "Roboto Slab"; }
+
+.authorization-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 0 10px 0;
+  box-shadow: 0 0 10px 0;
+  margin: 0 auto;
+  height: 300px;
+  width: 30%;
+  border-radius: 20px;
+  background-color: #2b4059; }
+  .authorization-form-name {
+    margin: 10px;
+    font-family: "Roboto Slab"; }
+    .authorization-form-name h1 {
+      text-align: center; }
+  .authorization-form-inputs {
     margin: 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -88,7 +141,7 @@ button {
   justify-content: space-between; }
   .progress-point {
     background: #f15251;
-    margin: 10px;
+    margin: 15px;
     width: 20px;
     height: 20px;
     border-radius: 100px; }
@@ -113,6 +166,16 @@ button {
   width: 250px;
   min-height: 20px;
   max-height: 50px; }
+
+.hint {
+  -webkit-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  font-size: 12px; }
+  .hint:hover {
+    background: #2d3436; }
 
 #birth_date {
   display: -webkit-box;
