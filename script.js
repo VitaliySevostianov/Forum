@@ -23,8 +23,7 @@ let emailAlert = document.createElement('div'),
 
 let inputsArr = [email, login, password, checkPassword, birthDate];// ПОЛУЧАЕМ МАССИВ ЭЛ-ОВ
 
-let json,// ПЕРЕМЕННАЯ С БУДУЩИМИ ДАННЫМИ
-    authorizationConfirm;// BOOL АВТОРИЗАЦИИ
+let authorizationConfirm;// BOOL АВТОРИЗАЦИИ
 
 /// НА ОСНОВАНИИ ЭТОГО КОНФИРМА БУДЕМ ВКЛЮЧАТЬ ОКОШКО АВТОРИЗАЦИИ(Ну или лучше сделать авторизацию по-умолчанию и переходить на форму регистрации по клику на надпись) ///
 window.addEventListener('DOMContentLoaded', () => {
@@ -131,13 +130,7 @@ function changeStage() {
                 setInactivePoint(0);
                 setActivePoint(i+1);
                 alertCleaner();
-                let userInfo = {
-                    email: email.value,
-                    login: login.value,
-                    password: password.value,
-                    birthDate: `${birthYear.value}-${birthMonth.value}-${birthDay.value}`
-                };
-                json = JSON.stringify(userInfo);// КОНВЕРТИРУЕМ В JSON ФОРМАТ НАШ userInfo
+
                 break;
                 }
 
@@ -150,11 +143,17 @@ function changeStage() {
     buttons[2].addEventListener("click", changeStage);
     buttons[3].addEventListener("click", () => {
         changeStage();
+        let userInfo = {
+            email: email.value,
+            login: login.value,
+            password: password.value,
+            birthDate: `${birthYear.value}-${birthMonth.value}-${birthDay.value}`
+        };
+        let json = JSON.stringify(userInfo);// КОНВЕРТИРУЕМ В JSON ФОРМАТ НАШ userInfo
         let request = new XMLHttpRequest();// ОТПРАВКА НА СЕРВЕР
         request.open('POST', 'server.php');
         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         request.send(json);
     });
-
 
     
