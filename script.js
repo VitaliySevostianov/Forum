@@ -174,5 +174,10 @@ function changeStage() {
         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         request.send(json);
     });
+    buttons[4].addEventListener("click", () => {
+        showAuth();
+    });
+
+
 
     
